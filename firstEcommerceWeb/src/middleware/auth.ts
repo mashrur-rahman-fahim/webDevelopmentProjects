@@ -21,6 +21,9 @@ export const authMiddleware=async(req:Request,res:Response,next:NextFunction)=>{
         if(!user){
             return next(new Unauthorization("Unauthorized",errorCode.UNAUTHORIZED))
         }
+        
+
+   
         req.user=user
         // res.locals.user=user
          next();

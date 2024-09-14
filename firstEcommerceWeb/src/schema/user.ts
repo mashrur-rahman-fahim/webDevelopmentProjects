@@ -7,9 +7,13 @@ export const   signUpSchema=z.object({
 })
 export const AddressSchema=z.object({
     lineOne:z.string(),
-    lineTwo:z.string().nullable(),
+    lineTwo:z.string().optional(),
     city:z.string(),
-    pincode:z.string().length(6),
-    userId:z.number()
+    pinCode:z.string().length(6),
+    
 
+})
+export const updateUserSchema=z.object({
+    billingAddress:z.number().optional(),
+    shippingAddress:z.number().optional()
 })

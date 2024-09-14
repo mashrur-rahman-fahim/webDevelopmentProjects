@@ -55,5 +55,5 @@ export const login=async (req:Request,res:Response,next:NextFunction)=>{
 
 }
 export const me=(req:Request,res:Response)=>{
-    res.json(res.locals.user)
+    res.json((req).user)
 }

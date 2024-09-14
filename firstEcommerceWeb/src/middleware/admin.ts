@@ -3,7 +3,8 @@ import { Unauthorization } from "../exceptions/unauthorization";
 import { errorCode } from "../exceptions/root";
 
 export const adminMiddleware = (req:Request,res:Response,next:NextFunction)=>{
-    const user=res.locals.user
+    const user=(req as any).user
+
     if (user.role=="ADMIN"){
             next()
     }
