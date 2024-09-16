@@ -3,7 +3,8 @@ export const asyncHandler=(fn)=>{
         try{
             await fn(req,res,next)
         }
-        catch{
+        catch(err){
+                console.log(`error:${err}`)
             res.status(500).json({success:false,message:"Something went wrong"})
         }
     }
