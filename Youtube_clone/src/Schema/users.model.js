@@ -20,7 +20,7 @@ const userSchema=new Schema({
       
 
     },
-    fullName:{
+    fulName:{
         type:String,
         required:true,
         trim:true,
@@ -70,21 +70,20 @@ userSchema.pre("save",async function(next){
 
 
 
-userSchema.methods.generateAccessToken= function(){
-    return jwt.sign({
+userSchema.methods.generateAccessToken= async function(){
+    return  jwt.sign({
         _id:this._id,
         email:this.email,
-        fullName:this.fullName,
-        avatar:this.avatar,
-        coverImage:this.coverImage,
-        watchHistory:this.watchHistory
-    },process.env.ACCESS_TOKEN,{expiresIn:ACCESS_TOKEN_EXP})
+        fulName:this.fulName,
+        userName:this.userName
+        
+    },process.env.ACCESS_TOKEN,{expiresIn:process.env.ACCESS_TOKEN_EXP})
 }
 userSchema.methods.generateRefreshToken= function(){
     return jwt.sign({
         _id:this._id,
        
-    },process.env.REFRESH_TOKEN,{expiresIn:REFRESH_TOKEN_EXP})
+    },process.env.REFRESH_TOKEN,{expiresIn:process.env.REFRESH_TOKEN_EXP})
 }
 
 export const user=mongoose.model("user",userSchema)
